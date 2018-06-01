@@ -1,0 +1,19 @@
+CREATE DATABASE bd_herfchan;
+USE bd_herfchan;
+
+CREATE TABLE IF NOT EXISTS board(
+	id LONG AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(200)
+); -- DROP TABLE board;
+
+CREATE TABLE IF NOT EXISTS thread(
+	id LONG AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(200),
+    fk_board INT REFERENCES board (id)
+); -- DROP TABLE thread;
+
+CREATE TABLE IF NOT EXISTS post(
+	id LONG AUTO_INCREMENT PRIMARY KEY,
+    mensaje VARCHAR(60000),
+    fk_thread INT REFERENCES thread (id)
+); -- DROP TABLE post;
