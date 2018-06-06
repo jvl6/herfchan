@@ -34,5 +34,12 @@ CREATE TABLE IF NOT EXISTS post(
 	id LONG AUTO_INCREMENT PRIMARY KEY,
     mensaje VARCHAR(60000),
     fk_thread INT REFERENCES thread (id),
-    fk_user INT REFERENCES postUser (id)
+    fk_user INT REFERENCES postUser (id),
+    isReply BOOLEAN
 ); -- DROP TABLE post;
+
+CREATE TABLE IF NOT EXISTS reply(
+	id LONG AUTO_INCREMENT PRIMARY KEY,
+    fk_post LONG REFERENCES post (id),
+    fk_reply LONG REFERENCES post (id)
+); -- DROP TABLE reply;
