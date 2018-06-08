@@ -19,7 +19,15 @@
                 <h5 class="card-title text-center">¿Qué es Herf?</h5>
             </div>
             <div class="card-body">
-                <p class="card-text"></p>
+                <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Aenean consectetur luctus mi, at mattis turpis. Sed est nisl, euismod quis tellus id, ultrices viverra diam. Pellentesque fringilla ultricies justo. Fusce sem ex, consectetur et eros non, convallis tempus sapien. Sed ornare urna quis rutrum dapibus. Proin vulputate magna sit amet lorem ullamcorper, at cursus purus dapibus. Aenean vehicula sapien odio, eget pharetra libero cursus eu.
+                Sed volutpat pharetra ligula, et ullamcorper diam commodo id. 
+                Proin sit amet lacus tempus, pharetra dui in, congue nibh. 
+                Nulla non cursus risus. Aliquam tempor sagittis ipsum quis mollis. 
+                Nam interdum justo enim, quis vulputate urna viverra eu. Morbi at gravida diam, ac lacinia risus. 
+                Quisque massa nibh, malesuada sit amet eros facilisis, consequat tincidunt risus. 
+                Ut pretium mollis lacus, sed euismod erat pulvinar in. Aenean ultricies lectus vitae ex rhoncus laoreet. 
+                Proin tristique sed libero ac dapibus. </p>
             </div>
         </div>
     </div>
