@@ -73,3 +73,19 @@ DELIMITER ;
 INSERT INTO board VALUES (NULL, '/h/');
 INSERT INTO postUser VALUES (NULL, 'Herfino');
 /*INSERTS POR DEFECTO*/
+
+/* Vista para ver los threads creados */
+
+CREATE VIEW thread_alive AS -- DROP VIEW thread_alive;
+SELECT
+	th.titulo AS 'Thread',
+    th.comentario AS 'Descripcion',
+    bo.nombre AS 'Board',
+    po.nombre AS 'User'
+FROM
+	thread th
+JOIN board bo ON th.fk_board = bo.id
+JOIN postUser po ON th.fk_user = po.id;
+
+SELECT * FROM thread_alive;
+SELECT nombre FROM board;
