@@ -89,3 +89,44 @@ JOIN postUser po ON th.fk_user = po.id;
 
 SELECT * FROM thread_alive;
 SELECT nombre FROM board;
+
+/* Vista para ver posts */
+
+CREATE VIEW posts_alive AS -- DROP VIEW posts_alive;
+SELECT
+	po.mensaje AS 'Mensaje',
+    th.titulo AS 'Thread',
+    pu.nombre AS 'User',
+    po.isReply AS 'Es Respuesta'
+FROM
+	post po
+JOIN thread th ON po.fk_thread = th.id
+JOIN postUser pu ON po.fk_user = pu.id;
+
+SELECT * FROM posts_alive;
+
+/* Vista para ver mods */
+
+CREATE VIEW mods_alive AS -- DROP VIEW posts_alive;
+SELECT
+	mo.usuario AS 'Usuario',
+    bo.nombre AS 'Board'
+FROM
+	moderador mo
+JOIN board bo ON mo.fk_board = bo.id;
+
+SELECT * FROM mods_alive;
+
+/* Vista para ver ban */
+
+CREATE VIEW bans_alive AS -- DROP VIEW bans_alive;
+SELECT
+	ip.ip AS 'IP Usuario',
+	bn.reason AS 'Motivo',
+	mo.usuario AS 'Baneado Por'
+FROM
+	ban bn
+JOIN ip ip ON bn.ip_ban = ip.ip
+JOIN moderador mo ON bn.fk_moderador = mo.id;
+
+SELECT * FROM bans_alive;
