@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <p><strong><h1 class="display-4 text-center">HerfChan</h1></strong></p>
+        <center><img src="res/herf.png" alt="" class="img-fluid" style="width: 50%;"></center>
     </div>
 
     <div class="container">
@@ -28,6 +28,29 @@
                 Quisque massa nibh, malesuada sit amet eros facilisis, consequat tincidunt risus. 
                 Ut pretium mollis lacus, sed euismod erat pulvinar in. Aenean ultricies lectus vitae ex rhoncus laoreet. 
                 Proin tristique sed libero ac dapibus. </p>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <div id="accordion">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            General
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <a href="./view/h/index.php">/h/ - Herf</a><br>
+                        <a href="./view/o/index.php">/o/ - oyeoyeoye</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

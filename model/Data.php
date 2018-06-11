@@ -9,7 +9,7 @@
             $this->con = new Conexion("bd_herfchan");
         }
 
-        public function crearThread($usuario, $titulo, $comentario, $board)
+        public function crearPost($usuario, $titulo, $comentario, $board)
         {
             $nombreUsuario;
             if($usuario == null){
@@ -18,10 +18,15 @@
                 $nombreUsuario = $usuario;
             }
 
-            $query = "CALL crearThread ('$titulo', '$comentario', '$board', '$nombreUsuario')";
+            $query = "CALL crearThread ('$nombreUsuario', '$titulo', '$comentario', '$board')";
             $this->con->conectar();
             $this->con->ejecutar($query);
             $this->con->desconectar();
+        }
+
+        public function FunctionName(Type $var = null)
+        {
+            # code...
         }
     }
 ?>

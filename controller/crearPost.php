@@ -12,7 +12,7 @@
 
     session_start();
 
-    $dat->crearThread($usuario, $titulo, $comentario, $board);
+    $dat->crearPost($usuario, $titulo, $comentario, $board);
 
     $men = $_SESSION["mensaje"] = "Thread creado";
     echo $men;

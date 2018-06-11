@@ -27,7 +27,7 @@
     <br>
 
     <div class="container text-center">
-        <h1>/h/ - Herf</h1>
+        <h1>/o/ - oyeoyeoye</h1>
         <br>
     </div>
     

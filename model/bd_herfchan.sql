@@ -29,22 +29,28 @@ CREATE TABLE IF NOT EXISTS postUser(
     nombre VARCHAR(200)
 ); -- DROP TABLE postUser;
 
-CREATE TABLE IF NOT EXISTS thread(
+/*CREATE TABLE IF NOT EXISTS thread(
 	id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(200),
-    comentario NVARCHAR(200),
+    comentario_fk BIGINT UNSIGNED REFERENCES post (id),
     fk_board INT REFERENCES board (id),
     fk_user INT REFERENCES postUser (id)
     -- op VARBINARY(200) REFERENCES ip (ip) PARA DESPUÉS
 ); -- DROP TABLE thread;
+*/
 
 CREATE TABLE IF NOT EXISTS post(
 	id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     mensaje VARCHAR(60000),
-    fk_thread INT REFERENCES thread (id),
     fk_user INT REFERENCES postUser (id),
-    isReply BOOLEAN
+    fk_board INT REFERENCES board (id)
 ); -- DROP TABLE post;
+
+CREATE TABLE IF NOT EXISTS thread(
+	id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(200),
+    fk_post BIGINT UNSIGNED REFERENCES post (id)
+); -- DROP TABLE thread;
 
 CREATE TABLE IF NOT EXISTS reply(
 	id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -53,10 +59,11 @@ CREATE TABLE IF NOT EXISTS reply(
 ); -- DROP TABLE reply;
 
 DELIMITER //
-CREATE PROCEDURE crearThread (titulo VARCHAR(200), comentario NVARCHAR(200), boardNombre VARCHAR(200), usuario VARCHAR(200))
+CREATE PROCEDURE crearThread (usuario VARCHAR(200), titulo VARCHAR(200), comentario VARCHAR(60000), boardNombre VARCHAR(200))
 BEGIN
 	DECLARE idUsuario INT;
 	DECLARE idBoard INT;
+    DECLARE idPost INT;
     SET idUsuario = (SELECT id FROM postUser WHERE nombre = usuario);
     SET idBoard = (SELECT id FROM board WHERE nombre = boardNombre);
     
@@ -65,27 +72,35 @@ BEGIN
         SET idUsuario = (SELECT id FROM postUser WHERE nombre = usuario);
     END IF;
     
-    INSERT INTO thread VALUES (NULL, titulo, comentario, idBoard, idUsuario);
+    INSERT INTO post VALUES (NULL, comentario, idUsuario, idBoard);
+    
+    INSERT INTO thread VALUES (NULL, titulo, LAST_INSERT_ID());
 END //
 DELIMITER ;
+-- DROP PROCEDURE crearThread;
 
 /*INSERTS POR DEFECTO*/
 INSERT INTO board VALUES (NULL, '/h/');
+INSERT INTO board VALUES (NULL, '/o/');
 INSERT INTO postUser VALUES (NULL, 'Herfino');
 /*INSERTS POR DEFECTO*/
+
+SELECT * FROM thread;
+SELECT * FROM post;
 
 /* Vista para ver los threads creados */
 
 CREATE VIEW thread_alive AS -- DROP VIEW thread_alive;
 SELECT
 	th.titulo AS 'Thread',
-    th.comentario AS 'Descripcion',
+    pt.mensaje AS 'Descripcion',
     bo.nombre AS 'Board',
-    po.nombre AS 'User'
+    u.nombre AS 'User'
 FROM
-	thread th
-JOIN board bo ON th.fk_board = bo.id
-JOIN postUser po ON th.fk_user = po.id;
+	post pt
+JOIN board bo ON pt.fk_board = bo.id
+JOIN thread th ON th.fk_post = pt.id
+JOIN postUser u ON pt.fk_user = u.id;
 
 SELECT * FROM thread_alive;
 SELECT nombre FROM board;
