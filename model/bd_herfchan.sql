@@ -85,6 +85,7 @@ INSERT INTO board VALUES (NULL, '/o/');
 INSERT INTO postUser VALUES (NULL, 'Herfino');
 /*INSERTS POR DEFECTO*/
 
+SELECT * FROM board;
 SELECT * FROM thread;
 SELECT * FROM post;
 
@@ -92,6 +93,7 @@ SELECT * FROM post;
 
 CREATE VIEW thread_alive AS -- DROP VIEW thread_alive;
 SELECT
+	th.fk_post AS 'ID',
 	th.titulo AS 'Thread',
     pt.mensaje AS 'Descripcion',
     bo.nombre AS 'Board',

@@ -37,7 +37,7 @@
 
     <div class="collapse" id="postear">
         <div class="container border border-secondary">
-            <form action="../../controller/crearPost.php" method="post">
+            <form action="../../controller/crearThread.php" method="post">
                 <div class="form-group">
                     <label for="usuario">Nombre:</label>
                     <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Herfino">
@@ -61,6 +61,33 @@
             <br>
         </div>
     </div>
+
+    <br>
+
+    <?php
+        require_once("../../model/Data.php");
+        $d = new Data();
+        $threads = $d->verThread("/h/");
+
+
+        foreach($threads as $t) {
+            echo "<div class='container'>";
+                echo "<div class='row'>";
+                    echo "<div class='col-sm border'>";
+                        echo "<h6 style='float: left' class='font-weight-bold text-primary'>".$t[1]."  </h6>";
+                        echo "<h6 style='float: left' class='text-success'>".$t[4]."</h6>";
+                        echo "<h6>  No. ".$t[0]."</h6>";
+
+                        echo "<p>";
+                            echo "".$t[2];
+                        echo "</p>";
+                    echo "</div>";            
+                echo "</div>";
+            echo "</div>";
+        }
+
+
+    ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

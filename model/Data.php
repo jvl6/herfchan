@@ -9,7 +9,7 @@
             $this->con = new Conexion("bd_herfchan");
         }
 
-        public function crearPost($usuario, $titulo, $comentario, $board)
+        public function crearThread($usuario, $titulo, $comentario, $board)
         {
             $nombreUsuario;
             if($usuario == null){
@@ -24,9 +24,19 @@
             $this->con->desconectar();
         }
 
-        public function FunctionName(Type $var = null)
+        public function verThread($board)
         {
-            # code...
+            $query = "SELECT * FROM thread_alive WHERE Board = '$board';";
+            $this->con->conectar();
+            $rs = $this->con->ejecutar($query);
+            $threads = array();
+
+            while($reg = $rs->fetch_array()){
+                $threads[] = $reg;
+            }
+
+            $this->con->desconectar();
+            return $threads;
         }
     }
 ?>
