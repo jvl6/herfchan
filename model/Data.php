@@ -38,5 +38,20 @@
             $this->con->desconectar();
             return $threads;
         }
+
+        public function verPosts($thread)
+        {
+            $query = "SELECT * FROM viewPosts WHERE Thread = $thread";
+            $this->con->conectar();
+            $rs = $this->con->ejecutar($query);
+            $posts = array();
+
+            while($reg = $rs->fetch_array()){
+                $posts[] = $reg;
+            }
+
+            $this->con->desconectar();
+            return $posts;
+        }
     }
 ?>

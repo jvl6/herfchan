@@ -79,6 +79,24 @@
                         echo "<p>";
                             echo "".$t[2];
                         echo "</p>";
+
+                        $posts = $d->verPosts($t[0]);
+
+                        foreach($posts as $p) {
+                            echo "<div class='container'>";
+                                echo "<div class='row'>";
+                                    echo "<div class='col-sm border'>";
+                                    echo "<h6 style='float: left' class='text-success'>".$p[4]."</h6>";
+                                    echo "<h6>  No. ".$p[1]."</h6>";
+
+                                        echo "<p>";
+                                            echo "".$p[2];
+                                        echo "</p>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
+                        }
+                        
                     echo "</div>";            
                 echo "</div>";
             echo "</div>";
