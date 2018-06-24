@@ -52,6 +52,12 @@ CREATE TABLE IF NOT EXISTS thread(
     fk_post BIGINT UNSIGNED REFERENCES post (id)
 ); -- DROP TABLE thread;
 
+CREATE TABLE IF NOT EXISTS post_thread(
+	id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    fk_thread BIGINT UNSIGNED REFERENCES thread (id),
+    fk_post BIGINT UNSIGNED REFERENCES post (id)
+);
+
 CREATE TABLE IF NOT EXISTS reply(
 	id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     fk_post LONG REFERENCES post (id),
@@ -107,21 +113,33 @@ JOIN postUser u ON pt.fk_user = u.id;
 SELECT * FROM thread_alive;
 SELECT nombre FROM board;
 
+INSERT INTO post VALUES(NULL, 'test', 1, 1);
+SELECT * FROM post;
+INSERT INTO post_thread VALUES(NULL, 1, 2);
+SELECT * FROM post_thread;
+INSERT INTO reply VALUES(NULL, 2, 1);
+SELECT * FROM reply;
+
 /* Vista para ver posts */
-
-CREATE VIEW posts_alive AS -- DROP VIEW posts_alive;
+CREATE VIEW viewPosts AS
 SELECT
-	po.mensaje AS 'Mensaje',
-    th.titulo AS 'Thread',
-    pu.nombre AS 'User',
-    po.isReply AS 'Es Respuesta'
+    th.id AS 'Thread',
+	pt.id AS 'Post',
+    pt.mensaje,
+    rp.fk_reply AS 'Reply',
+    u.nombre AS 'User',
+    b.nombre AS 'Board'
 FROM
-	post po
-JOIN thread th ON po.fk_thread = th.id
-JOIN postUser pu ON po.fk_user = pu.id;
+	post pt
+JOIN post_thread pth ON pt.id = pth.fk_post
+JOIN thread th ON pth.fk_thread = th.id
+JOIN reply rp ON pt.id = rp.fk_post
+JOIN postUser u ON u.id = pt.fk_user
+JOIN board b ON b.id = pt.fk_board;
 
-SELECT * FROM posts_alive;
+DROP VIEW viewPosts;
 
+SELECT * FROM viewPosts;
 /* Vista para ver mods */
 
 CREATE VIEW mods_alive AS -- DROP VIEW posts_alive;
