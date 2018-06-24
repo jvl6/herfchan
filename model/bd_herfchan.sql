@@ -113,13 +113,6 @@ JOIN postUser u ON pt.fk_user = u.id;
 SELECT * FROM thread_alive;
 SELECT nombre FROM board;
 
-INSERT INTO post VALUES(NULL, 'test', 1, 1);
-SELECT * FROM post;
-INSERT INTO post_thread VALUES(NULL, 1, 2);
-SELECT * FROM post_thread;
-INSERT INTO reply VALUES(NULL, 2, 1);
-SELECT * FROM reply;
-
 /* Vista para ver posts */
 CREATE VIEW viewPosts AS
 SELECT
@@ -132,12 +125,10 @@ SELECT
 FROM
 	post pt
 JOIN post_thread pth ON pt.id = pth.fk_post
-JOIN thread th ON pth.fk_thread = th.id
+JOIN thread th ON pth.fk_thread = th.fk_post
 JOIN reply rp ON pt.id = rp.fk_post
 JOIN postUser u ON u.id = pt.fk_user
-JOIN board b ON b.id = pt.fk_board;
-
-DROP VIEW viewPosts;
+JOIN board b ON b.id = pt.fk_board; -- DROP VIEW viewPosts;
 
 SELECT * FROM viewPosts;
 /* Vista para ver mods */
