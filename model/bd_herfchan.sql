@@ -116,7 +116,7 @@ SELECT nombre FROM board;
 /* Vista para ver posts */
 CREATE VIEW viewPosts AS
 SELECT
-    th.id AS 'Thread',
+    th.fk_post AS 'Thread',
 	pt.id AS 'Post',
     pt.mensaje,
     rp.fk_reply AS 'Reply',
