@@ -13,10 +13,4 @@
     session_start();
 
     $dat->crearPost($usuario, $titulo, $comentario, $board);
-
-    $men = $_SESSION["mensaje"] = "Thread creado";
-    echo $men;
-    unset($_SESSION["mensaje"]);
-
-    echo "<a href='$location'>Volver...</a>";
 ?>

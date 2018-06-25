@@ -10,13 +10,10 @@
 
     $dat = new Data();
 
-    session_start();
-
     $dat->crearThread($usuario, $titulo, $comentario, $board);
 
-    $men = $_SESSION["mensaje"] = "Thread creado";
-    echo $men;
-    unset($_SESSION["mensaje"]);
+    sleep(3);
 
-    echo "<a href='$location'>Volver...</a>";
+    header("location: ../view/h/index.php");
+
 ?>

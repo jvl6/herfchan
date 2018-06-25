@@ -56,13 +56,30 @@
                 <input type="hidden" id="board" name="board" value="/h/">
                 <input type="hidden" id="location" name="location" value="../view/h/index.php">
                 
-                <input class="btn btn-primary" type="submit" value="Postear" role="button">
+                <input class="btn btn-primary" type="submit" value="Postear" role="button" data-toggle="modal" data-target="#popOk">
             </form>
             <br>
         </div>
     </div>
 
     <br>
+
+        <div class="modal fade" id="popOk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Éxito</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Post Hecho
+        </div>
+        </div>
+    </div>
+    </div>
+
 
     <?php
         require_once("../../model/Data.php");
@@ -106,6 +123,10 @@
 
 
     ?>
+
+    <br>
+    <br>
+    <br>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
