@@ -32,11 +32,11 @@
         <br>
     </div>
     
-    <center><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#postear" aria-expanded="false" aria-controls="postear">Crear Nuevo Hilo</button></center>
+    <center><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#crearThread" aria-expanded="false" aria-controls="crearThread">Crear Nuevo Hilo</button></center>
 
     <br>
 
-    <div class="collapse" id="postear">
+    <div class="collapse" id="crearThread">
         <div class="container border border-secondary">
             <form action="../../controller/crearThread.php" method="post">
                 <div class="form-group">
@@ -57,7 +57,7 @@
                 <input type="hidden" id="board" name="board" value="/h/">
                 <input type="hidden" id="location" name="location" value="../view/h/index.php">
                 
-                <input class="btn btn-primary" type="submit" value="Postear" role="button" data-toggle="modal" data-target="#popOk">
+                <input class="btn btn-primary" type="submit" value="crearThread" role="button" data-toggle="modal" data-target="#popOk">
             </form>
             <br>
         </div>
@@ -66,17 +66,17 @@
     <br>
 
         <div class="modal fade" id="popOk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Éxito</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            Post Hecho
-        </div>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Éxito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                Post Hecho
+            </div>
         </div>
     </div>
     </div>
@@ -94,7 +94,41 @@
                     echo "<div class='col-sm border'>";
                         echo "<h6 style='float: left' class='font-weight-bold text-primary'>".$t[1]."  </h6>";
                         echo "<h6 style='float: left' class='text-success'>".$t[4]."</h6>";
-                        echo "<h6>  No. ".$t[0]."</h6>";
+                        echo "<h6>  No. ".$t[0]."  <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#threadOK'>Responder</button>"."</h6>";
+
+                        echo "<div class='modal fade' id='threadOK' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+                            echo "<div class='modal-dialog' role='document'>";
+                                echo "<div class='modal-content'>";
+                                    echo "<div class='modal-header'>";
+                                        echo "<h5 class='modal-title' id='exampleModalLabel'>Responder</h5>";
+                                        echo "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
+                                            echo "<span aria-hidden='true'>&times;</span>";
+                                        echo "</button>";
+                                    echo "</div>";
+
+                                    echo "<div class='modal-body'>";
+                                        echo "<form action='../../controller/crearPost.php' method='post'>";
+                                            echo "<div class='form-group'>";
+                                                echo "<label for='usuario'>Nombre:</label>";
+                                                echo "<input class='form-control' type='text' name='usuario' id='usuario' placeholder='Herfino'>";
+                                            echo "</div>";
+
+                                            echo "<div class='form-group'>";
+                                                echo "<label for='comentario'>Mensaje:</label>";
+                                                echo "<textarea class='form-control' name='mensaje' id='mensaje' rows='3'></textarea>";
+                                            echo "</div>";
+
+                                            echo "<input type='hidden' id='board' name='board' value='/h/'>";
+                                            echo "<input type='hidden' id='location' name='location' value='../view/h/index.php'>";
+                                            echo "<input type='hidden' id='idThread' name='idThread' value=".$t[0].">";
+
+                                            echo "<input class='btn btn-primary' type='submit' value='Postear' role='button'>";
+                                        echo "</form>";
+                                    echo "</div>";
+                                echo "</div>";
+
+                            echo "</div>";
+                        echo "</div>";
 
                         echo "<p>";
                             echo "".$t[2];

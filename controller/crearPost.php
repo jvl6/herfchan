@@ -2,15 +2,24 @@
     require_once("../model/Data.php");
 
     $usuario = $_REQUEST["usuario"];
-    $titulo = $_REQUEST["titulo"];
-    $comentario = $_REQUEST["comentario"];
+    $mensaje = $_REQUEST["mensaje"];
     $board = $_REQUEST["board"];
+    $idThread = $_REQUEST["idThread"];
     $location = $_REQUEST["location"];
     // $ipaddress = $_SERVER['REMOTE_ADDR']; -> Para después (para ver quién es el op del thread).
 
     $dat = new Data();
 
-    session_start();
+    $dat->crearPost($usuario, $mensaje, $board, $idThread);
 
-    $dat->crearPost($usuario, $titulo, $comentario, $board);
+    sleep(2);
+
+    switch ($board) {
+        case "/h/":
+            header("location: ../view/h/index.php");
+            break;
+        case "/o/":
+            header("location: ../view/o/index.php");
+            break;
+    }
 ?>
