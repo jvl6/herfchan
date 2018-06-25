@@ -12,8 +12,15 @@
 
     $dat->crearThread($usuario, $titulo, $comentario, $board);
 
-    sleep(3);
+    sleep(2);
 
-    header("location: ../view/h/index.php");
+    switch ($board) {
+        case "/h/":
+            header("location: ../view/h/index.php");
+            break;
+        case "/o/":
+            header("location: ../view/o/index.php");
+            break;
+    }
 
 ?>

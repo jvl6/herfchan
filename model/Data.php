@@ -26,7 +26,7 @@
 
         public function verThread($board)
         {
-            $query = "SELECT * FROM thread_alive WHERE Board = '$board';";
+            $query = "SELECT * FROM thread_alive WHERE Board = '$board' ORDER BY id ASC;";
             $this->con->conectar();
             $rs = $this->con->ejecutar($query);
             $threads = array();

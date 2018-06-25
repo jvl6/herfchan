@@ -56,11 +56,29 @@
                 <input type="hidden" id="board" name="board" value="/o/">
                 <input type="hidden" id="location" name="location" value="../view/o/index.php">
                 
-                <input class="btn btn-primary" type="submit" value="Postear" role="button">
+                <input class="btn btn-primary" type="submit" value="Postear" role="button" role="button" data-toggle="modal" data-target="#popOk">
             </form>
             <br>
         </div>
     </div>
+
+
+    <div class="modal fade" id="popOk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Éxito</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Post Hecho
+        </div>
+        </div>
+    </div>
+    </div>
+
 
     <?php
         require_once("../../model/Data.php");
