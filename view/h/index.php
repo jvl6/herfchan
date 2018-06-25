@@ -94,9 +94,9 @@
                     echo "<div class='col-sm border'>";
                         echo "<h6 style='float: left' class='font-weight-bold text-primary'>".$t[1]."  </h6>";
                         echo "<h6 style='float: left' class='text-success'>".$t[4]."</h6>";
-                        echo "<h6>  No. ".$t[0]."  <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#threadOK'>Responder</button>"."</h6>";
+                        echo "<h6>  No. ".$t[0]."  <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#threadOK".$t[0]."'>Responder</button>"."</h6>";
 
-                        echo "<div class='modal fade' id='threadOK' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+                        echo "<div class='modal fade' id='threadOK".$t[0]."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
                             echo "<div class='modal-dialog' role='document'>";
                                 echo "<div class='modal-content'>";
                                     echo "<div class='modal-header'>";
