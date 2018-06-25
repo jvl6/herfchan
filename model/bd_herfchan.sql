@@ -85,6 +85,28 @@ END //
 DELIMITER ;
 -- DROP PROCEDURE crearThread;
 
+DELIMITER //
+CREATE PROCEDURE crearPost (usuario VARCHAR(200), mensaje VARCHAR(200), boardNombre VARCHAR(200), idThread BIGINT UNSIGNED)
+BEGIN
+	DECLARE idUsuario INT;
+	DECLARE idBoard INT;
+    DECLARE idPost INT;
+    SET idUsuario = (SELECT id FROM postUser WHERE nombre = usuario);
+    SET idBoard = (SELECT id FROM board WHERE nombre = boardNombre);
+    
+    IF (idUsuario IS NULL) THEN
+		INSERT INTO postUser VALUES (NULL, usuario);
+        SET idUsuario = (SELECT id FROM postUser WHERE nombre = usuario);
+    END IF;
+    
+    INSERT INTO post VALUES (NULL, mensaje, idUsuario, idBoard);
+    SET idPost = LAST_INSERT_ID();
+    INSERT INTO post_thread VALUES(NULL, idThread, idPost);
+    INSERT INTO reply VALUES(NULL, idPost, idThread);
+END //
+DELIMITER ;
+-- DROP PROCEDURE crearPost;
+
 /*INSERTS POR DEFECTO*/
 INSERT INTO board VALUES (NULL, '/h/');
 INSERT INTO board VALUES (NULL, '/o/');

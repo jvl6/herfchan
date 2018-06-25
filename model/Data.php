@@ -53,5 +53,20 @@
             $this->con->desconectar();
             return $posts;
         }
+
+        public function crearPost($usuario, $mensaje, $board, $idThread)
+        {
+            $nombreUsuario;
+            if($usuario == null){
+                $nombreUsuario = "Herfino";
+            } else {
+                $nombreUsuario = $usuario;
+            }
+
+            $query = "CALL crearPost ('$nombreUsuario', '$mensaje', '$board', '$idThread')";
+            $this->con->conectar();
+            $this->con->ejecutar($query);
+            $this->con->desconectar();
+        }
     }
 ?>
