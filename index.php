@@ -56,6 +56,61 @@
         </div>
     </div>
 
+
+    <br>
+
+    <?php
+        require_once("model/Data.php");
+        $d = new Data();
+        $stats = $d->verStats("board");
+
+        echo "<div class='container'>";
+        echo "<div class='card' style='width: 40rem;'>";
+            echo "<div class='card-header'>";
+            echo "<h5 class='card-title text-center'>Estadísticas</h5>";
+            echo "</div>";
+            echo "<div class='card-body'>";
+                
+            echo "<p class='card-text'>";
+
+            foreach($stats as $s) {
+                echo "<h6> Cantidad de Boards: ".$s[0]." </h6>";
+            }
+
+            $stats2 = $d->verStats("postUser");
+
+            foreach($stats2 as $s2) {
+                echo "<h6> Cantidad de Usuarios: ".$s2[0]." </h6>";
+            }
+
+            $stats3 = $d->verStats("post");
+
+            foreach($stats2 as $s2) {
+                echo "<h6> Cantidad de Posts: ".$s2[0]." </h6>";
+            }
+
+            $stats3 = $d->verStats("thread");
+
+            foreach($stats3 as $s3) {
+                echo "<h6> Cantidad de Threads: ".$s3[0]." </h6>";
+            }
+
+            $stats4 = $d->verStats("reply");
+
+            foreach($stats4 as $s4) {
+                echo "<h6> Cantidad de Replys: ".$s4[0]." </h6>";
+            }
+
+
+        echo "</p>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+
+    ?>
+
+    <br>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

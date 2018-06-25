@@ -68,5 +68,19 @@
             $this->con->ejecutar($query);
             $this->con->desconectar();
         }
+
+        public function verStats($valor){
+            $query = "SELECT COUNT(id) FROM $valor";
+            $this->con->conectar();
+            $rs = $this->con->ejecutar($query);
+            $stats = array();
+
+            while($reg = $rs->fetch_array()){
+                $stats[] = $reg;
+            }
+
+            $this->con->desconectar();
+            return $stats;
+        }
     }
 ?>
