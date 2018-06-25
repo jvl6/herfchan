@@ -93,7 +93,41 @@
                     echo "<div class='col-sm border'>";
                         echo "<h6 style='float: left' class='font-weight-bold text-primary'>".$t[1]."  </h6>";
                         echo "<h6 style='float: left' class='text-success'>".$t[4]."</h6>";
-                        echo "<h6>  No. ".$t[0]."</h6>";
+                        echo "<h6>  No. ".$t[0]."  <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#threadOK".$t[0]."'>Responder</button>"."</h6>";
+
+                        echo "<div class='modal fade' id='threadOK".$t[0]."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+                            echo "<div class='modal-dialog' role='document'>";
+                                echo "<div class='modal-content'>";
+                                    echo "<div class='modal-header'>";
+                                        echo "<h5 class='modal-title' id='exampleModalLabel'>Responder</h5>";
+                                        echo "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
+                                            echo "<span aria-hidden='true'>&times;</span>";
+                                        echo "</button>";
+                                    echo "</div>";
+
+                                    echo "<div class='modal-body'>";
+                                        echo "<form action='../../controller/crearPost.php' method='post'>";
+                                            echo "<div class='form-group'>";
+                                                echo "<label for='usuario'>Nombre:</label>";
+                                                echo "<input class='form-control' type='text' name='usuario' id='usuario' placeholder='Herfino'>";
+                                            echo "</div>";
+
+                                            echo "<div class='form-group'>";
+                                                echo "<label for='comentario'>Mensaje:</label>";
+                                                echo "<textarea class='form-control' name='mensaje' id='mensaje' rows='3'></textarea>";
+                                            echo "</div>";
+
+                                            echo "<input type='hidden' id='board' name='board' value='/o/'>";
+                                            echo "<input type='hidden' id='location' name='location' value='../view/o/index.php'>";
+                                            echo "<input type='hidden' id='idThread' name='idThread' value=".$t[0].">";
+
+                                            echo "<input class='btn btn-primary' type='submit' value='Postear' role='button'>";
+                                        echo "</form>";
+                                    echo "</div>";
+                                echo "</div>";
+
+                            echo "</div>";
+                        echo "</div>";
 
                         echo "<p>";
                             echo "".$t[2];
