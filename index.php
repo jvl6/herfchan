@@ -7,6 +7,7 @@
     <title>Herfchan</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="res/css_custom.css">
+    <link rel="icon" size="16x16" href="favicon.ico">
 </head>
 <body>
     <div class="container">
