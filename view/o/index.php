@@ -21,7 +21,7 @@
     <br>
 
     <div class="container text-center">
-        <img src="../../res/banner/herf.jpg" alt="" class="img-thumbnail" style="width: 25%;">
+        <img src="../../res/banner/herf_colocolo.jpg" alt="" class="img-thumbnail" style="width: 25%;">
     </div>
 
     <br>
