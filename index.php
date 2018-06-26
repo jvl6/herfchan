@@ -36,24 +36,19 @@
     <br>
 
         <div class="container text-right">
-            <img src="res/herfito.jpg" alt="" class="img-thumbnail rounded float-right" style="width: 50%;">
+            <img src="res/herfito.jpg" alt="" class="img-thumbnail rounded float-right" style="width: 45%;">
         </div>
 
     <div class="container">
-        <div id="accordion">
             <div class="card" style="width: 18rem;">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            General
-                        </button>
-                    </h5>
+                <div class="card-header">
+                    <h5 class="card-title text-center">General</h5>
                 </div>
-
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        <a href="./view/h/index.php">/h/ - Herf</a><br>
-                        <a href="./view/o/index.php">/o/ - oyeoyeoye</a>
+                <div class="card-body">
+                <p class="card-text">
+                        <a href="./view/h/index.php">► /h/ - Herf</a><br>
+                        <a href="./view/o/index.php">► /o/ - oyeoyeoye</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -78,31 +73,39 @@
             echo "<p class='card-text'>";
 
             foreach($stats as $s) {
-                echo "<h6> Cantidad de Boards: ".$s[0]." </h6>";
+                echo "<h8> ► Cantidad de Boards: ".$s[0]." </h8>";
             }
+
+            echo "<br>";
 
             $stats2 = $d->verStats("postUser");
 
             foreach($stats2 as $s2) {
-                echo "<h6> Cantidad de Usuarios: ".$s2[0]." </h6>";
+                echo "<h8> ► Cantidad de Usuarios: ".$s2[0]." </h8>";
             }
+
+            echo "<br>";
 
             $stats3 = $d->verStats("post");
 
             foreach($stats2 as $s2) {
-                echo "<h6> Cantidad de Posts: ".$s2[0]." </h6>";
+                echo "<h8> ► Cantidad de Posts: ".$s2[0]." </h8>";
             }
+
+            echo "<br>";
 
             $stats3 = $d->verStats("thread");
 
             foreach($stats3 as $s3) {
-                echo "<h6> Cantidad de Threads: ".$s3[0]." </h6>";
+                echo "<h8> ► Cantidad de Threads: ".$s3[0]." </h8>";
             }
+
+            echo "<br>";
 
             $stats4 = $d->verStats("reply");
 
             foreach($stats4 as $s4) {
-                echo "<h6> Cantidad de Replys: ".$s4[0]." </h6>";
+                echo "<h8> ► Cantidad de Replys: ".$s4[0]." </h8>";
             }
 
 
@@ -114,8 +117,10 @@
     ?>
 
     <br>
+    <br>
+    <br>
 
-    <center><p>Copyright © 2018 HerfChan community support LLC. All rights reserved. </div>
+    <center><p>Copyright © 2018 Herfchan community support LLC. All rights reserved. </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
