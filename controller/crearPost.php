@@ -14,12 +14,5 @@
 
     sleep(2);
 
-    switch ($board) {
-        case "/h/":
-            header("location: ../view/h/index.php");
-            break;
-        case "/o/":
-            header("location: ../view/o/index.php");
-            break;
-    }
+    header("location:".$location);
 ?>

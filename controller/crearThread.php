@@ -1,6 +1,15 @@
 <?php
     require_once("../model/Data.php");
 
+    $size = $_FILES['imagen']['size'];
+    $name = $_FILES['imagen']['name'];
+    $temp = $_FILES['imagen']['tmp_name'];
+    $type = $_FILES['imagen']['type'];
+
+    $prefijo = rand();
+    $ruta_destino = "../res/content/".$prefijo."_".$name;
+    $copiar = copy($temp, $ruta_destino);
+
     $usuario = $_REQUEST["usuario"];
     $titulo = $_REQUEST["titulo"];
     $comentario = $_REQUEST["comentario"];
@@ -14,13 +23,6 @@
 
     sleep(2);
 
-    switch ($board) {
-        case "/h/":
-            header("location: ../view/h/index.php");
-            break;
-        case "/o/":
-            header("location: ../view/o/index.php");
-            break;
-    }
+    header("location:".$location);
 
 ?>

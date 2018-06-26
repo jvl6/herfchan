@@ -12,12 +12,28 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFF0DF;">
             <a href="../../index.php">
                 <img src="../../res/herfCube.png" alt="" class="img-fluid" style="width: 30%">
             </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Boards
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="../h/index.php">/h/ - Herf</a>
+                            <a class="dropdown-item" href="../o/index.php">/o/ - oyeoyeoye</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </div>
+
 
     <br>
 
@@ -56,6 +72,8 @@
 
                 <input type="hidden" id="board" name="board" value="/o/">
                 <input type="hidden" id="location" name="location" value="../view/o/index.php">
+                <input type="file" class="form-control-file" id="imagen">
+                <br>
                 
                 <input class="btn btn-primary" type="submit" value="Postear" role="button" role="button" data-toggle="modal" data-target="#popOk">
             </form>
