@@ -43,8 +43,7 @@ CREATE TABLE IF NOT EXISTS post(
 	id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     mensaje VARCHAR(60000),
     fk_user INT REFERENCES postUser (id),
-    fk_board INT REFERENCES board (id),
-    imagen VARCHAR(100)
+    fk_board INT REFERENCES board (id)
 ); -- DROP TABLE post;
 
 CREATE TABLE IF NOT EXISTS thread(
@@ -66,7 +65,7 @@ CREATE TABLE IF NOT EXISTS reply(
 ); -- DROP TABLE reply;
 
 DELIMITER //
-CREATE PROCEDURE crearThread (usuario VARCHAR(200), titulo VARCHAR(200), comentario VARCHAR(60000), boardNombre VARCHAR(200), imagen VARCHAR(100))
+CREATE PROCEDURE crearThread (usuario VARCHAR(200), titulo VARCHAR(200), comentario VARCHAR(60000), boardNombre VARCHAR(200))
 BEGIN
 	DECLARE idUsuario INT;
 	DECLARE idBoard INT;
@@ -79,7 +78,7 @@ BEGIN
         SET idUsuario = (SELECT id FROM postUser WHERE nombre = usuario);
     END IF;
     
-    INSERT INTO post VALUES (NULL, comentario, idUsuario, idBoard, imagen);
+    INSERT INTO post VALUES (NULL, comentario, idUsuario, idBoard);
     
     INSERT INTO thread VALUES (NULL, titulo, LAST_INSERT_ID());
 END //
@@ -87,7 +86,7 @@ DELIMITER ;
 -- DROP PROCEDURE crearThread;
 
 DELIMITER //
-CREATE PROCEDURE crearPost (usuario VARCHAR(200), mensaje VARCHAR(200), boardNombre VARCHAR(200), idThread BIGINT UNSIGNED, imagen VARCHAR(100))
+CREATE PROCEDURE crearPost (usuario VARCHAR(200), mensaje VARCHAR(200), boardNombre VARCHAR(200), idThread BIGINT UNSIGNED)
 BEGIN
 	DECLARE idUsuario INT;
 	DECLARE idBoard INT;
@@ -100,7 +99,7 @@ BEGIN
         SET idUsuario = (SELECT id FROM postUser WHERE nombre = usuario);
     END IF;
     
-    INSERT INTO post VALUES (NULL, mensaje, idUsuario, idBoard, imagen);
+    INSERT INTO post VALUES (NULL, mensaje, idUsuario, idBoard);
     SET idPost = LAST_INSERT_ID();
     INSERT INTO post_thread VALUES(NULL, idThread, idPost);
     INSERT INTO reply VALUES(NULL, idPost, idThread);
@@ -126,8 +125,7 @@ SELECT
 	th.titulo AS 'Thread',
     pt.mensaje AS 'Descripcion',
     bo.nombre AS 'Board',
-    u.nombre AS 'User',
-    pt.imagen AS 'Imagen'
+    u.nombre AS 'User'
 FROM
 	post pt
 JOIN board bo ON pt.fk_board = bo.id
@@ -145,8 +143,7 @@ SELECT
     pt.mensaje,
     rp.fk_reply AS 'Reply',
     u.nombre AS 'User',
-    b.nombre AS 'Board',
-    pt.imagen AS 'Imagen'
+    b.nombre AS 'Board'
 FROM
 	post pt
 JOIN post_thread pth ON pt.id = pth.fk_post

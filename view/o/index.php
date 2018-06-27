@@ -111,7 +111,40 @@
                     echo "<div class='col-sm border'>";
                         echo "<h6 style='float: left' class='font-weight-bold text-primary'>".$t[1]."  </h6>";
                         echo "<h6 style='float: left' class='text-success'>".$t[4]."</h6>";
-                        echo "<h6>  No. ".$t[0]."  <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#threadOK".$t[0]."'>Responder</button>"."</h6>";
+                        echo "<h6>  No. ".$t[0]."  <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#threadOK".$t[0]."'>Responder</button>"." <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#borrarTOK".$t[0]."'>Borrar</button>"."</h6>";
+
+                        echo "<div class='modal fade' id='borrarTOK".$t[0]."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+                            echo "<div class='modal-dialog' role='document'>";
+                                echo "<div class='modal-content'>";
+                                    echo "<div class='modal-header'>";
+                                        echo "<h5 class='modal-title' id='exampleModalLabel'>Login de Moderador</h5>";
+                                        echo "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
+                                            echo "<span aria-hidden='true'>&times;</span>";
+                                        echo "</button>";
+                                    echo "</div>";
+
+                                    echo "<div class='modal-body'>";
+                                        echo "<form action='../../controller/borrarThread.php' method='post'>";
+                                            echo "<div class='form-group'>";
+                                                echo "<label for='usuario'>Nombre:</label>";
+                                                echo "<input class='form-control' type='text' name='usuario'>";
+                                            echo "</div>";
+
+                                            echo "<div class='form-group'>";
+                                                echo "<label for='password'>Contraseña:</label>";
+                                                echo "<input type='password' class='form-control' id='password' name='password'>";
+                                            echo "</div>";
+
+                                            echo "<input type='hidden' id='location' name='location' value='../view/h/index.php'>";
+                                            echo "<input type='hidden' id='idThread' name='idThread' value='".$t[0]."'>";
+                                            echo "<br>";
+                                            echo "<input class='btn btn-primary' type='submit' value='Borrar' role='button'>";
+                                        echo "</form>";
+                                    echo "</div>";
+                                echo "</div>";
+
+                            echo "</div>";
+                        echo "</div>";
 
                         echo "<div class='modal fade' id='threadOK".$t[0]."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
                             echo "<div class='modal-dialog' role='document'>";
@@ -158,7 +191,40 @@
                                 echo "<div class='row'>";
                                     echo "<div class='col-sm border'>";
                                     echo "<h6 style='float: left' class='text-success'>".$p[4]."</h6>";
-                                    echo "<h6>  No. ".$p[1]."</h6>";
+                                    echo "<h6>  No. ".$p[1]."     <button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#borrarOK".$p[1]."'>Borrar</button>"."</h6>";
+
+                                    echo "<div class='modal fade' id='borrarOK".$p[1]."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>";
+                                        echo "<div class='modal-dialog' role='document'>";
+                                            echo "<div class='modal-content'>";
+                                                echo "<div class='modal-header'>";
+                                                    echo "<h5 class='modal-title' id='exampleModalLabel'>Login de Moderador</h5>";
+                                                    echo "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
+                                                        echo "<span aria-hidden='true'>&times;</span>";
+                                                    echo "</button>";
+                                                echo "</div>";
+            
+                                                echo "<div class='modal-body'>";
+                                                    echo "<form action='../../controller/borrarPost.php' method='post'>";
+                                                        echo "<div class='form-group'>";
+                                                            echo "<label for='usuario'>Nombre:</label>";
+                                                            echo "<input class='form-control' type='text' name='usuario'>";
+                                                        echo "</div>";
+            
+                                                        echo "<div class='form-group'>";
+                                                            echo "<label for='password'>Contraseña:</label>";
+                                                            echo "<input type='password' class='form-control' id='password' name='password'>";
+                                                        echo "</div>";
+            
+                                                        echo "<input type='hidden' id='location' name='location' value='../view/h/index.php'>";
+                                                        echo "<input type='hidden' id='idPost' name='idPost' value='".$p[1]."'>";
+                                                        echo "<br>";
+                                                        echo "<input class='btn btn-primary' type='submit' value='Borrar' role='button'>";
+                                                    echo "</form>";
+                                                echo "</div>";
+                                            echo "</div>";
+            
+                                        echo "</div>";
+                                    echo "</div>";
 
                                         echo "<p>";
                                             echo "".$p[2];

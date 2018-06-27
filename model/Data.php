@@ -9,7 +9,7 @@
             $this->con = new Conexion("bd_herfchan");
         }
 
-        public function crearThread($usuario, $titulo, $comentario, $board, $imagen)
+        public function crearThread($usuario, $titulo, $comentario, $board)
         {
             $nombreUsuario;
             if($usuario == null){
@@ -18,7 +18,7 @@
                 $nombreUsuario = $usuario;
             }
 
-            $query = "CALL crearThread ('$nombreUsuario', '$titulo', '$comentario', '$board', '$imagen')";
+            $query = "CALL crearThread ('$nombreUsuario', '$titulo', '$comentario', '$board')";
             $this->con->conectar();
             $this->con->ejecutar($query);
             $this->con->desconectar();
@@ -54,7 +54,7 @@
             return $posts;
         }
 
-        public function crearPost($usuario, $mensaje, $board, $idThread, $imagen)
+        public function crearPost($usuario, $mensaje, $board, $idThread)
         {
             $nombreUsuario;
             if($usuario == null){
@@ -63,7 +63,7 @@
                 $nombreUsuario = $usuario;
             }
 
-            $query = "CALL crearPost ('$nombreUsuario', '$mensaje', '$board', '$idThread', '$imagen')";
+            $query = "CALL crearPost ('$nombreUsuario', '$mensaje', '$board', '$idThread')";
             $this->con->conectar();
             $this->con->ejecutar($query);
             $this->con->desconectar();
@@ -82,5 +82,38 @@
             $this->con->desconectar();
             return $stats;
         }
+
+        public function eliminarPost($postId){
+            $query = "DELETE FROM post WHERE id = $postId";
+            $this ->con->conectar();
+            $this ->con->ejecutar($query);
+            $this ->con->desconectar();
+        }
+
+        public function eliminarThread($threadId){
+            $query = "DELETE FROM thread WHERE id = $threadId";
+            $this ->con->conectar();
+            $this ->con->ejecutar($query);
+            $this ->con->desconectar();
+        }
+
+        public function checkMod($user,$pass){
+            $query = "SELECT COUNT(*) FROM moderador WHERE usuario = '$user' AND pass = '$pass'";
+            $this->con->conectar();
+            $rs = $this->con->ejecutar($query);
+    
+            $existe = false;
+    
+            if($reg = $rs->fetch_array()){
+                if($reg[0]==1){
+                    $existe = true;
+                }
+            }
+    
+            $this->con->desconectar();
+    
+            return $existe;
+        }
+
     }
 ?>

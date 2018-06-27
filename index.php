@@ -105,7 +105,7 @@
             $stats4 = $d->verStats("reply");
 
             foreach($stats4 as $s4) {
-                echo "<h8> ► Cantidad de Replys: ".$s4[0]." </h8>";
+                echo "<h8> ► Cantidad de Replies: ".$s4[0]." </h8>";
             }
 
 
