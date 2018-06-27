@@ -56,12 +56,12 @@
             <form action="../../controller/crearThread.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="usuario">Nombre:</label>
-                    <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Herfino">
+                    <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Herfino" autocomplete="off">
                 </div>
 
                 <div class="form-group">
                     <label for="titulo">Título:</label>
-                    <input class="form-control" type="text" name="titulo" id="titulo">
+                    <input class="form-control" type="text" name="titulo" id="titulo" autocomplete="off">
                 </div>
 
                 <div class="form-group">
@@ -124,10 +124,10 @@
                                     echo "</div>";
 
                                     echo "<div class='modal-body'>";
-                                        echo "<form action='../../controller/crearPost.php' method='post'>";
+                                        echo "<form action='../../controller/crearPost.php' method='post' enctype='multipart/form-data'>";
                                             echo "<div class='form-group'>";
                                                 echo "<label for='usuario'>Nombre:</label>";
-                                                echo "<input class='form-control' type='text' name='usuario' id='usuario' placeholder='Herfino'>";
+                                                echo "<input class='form-control' type='text' name='usuario' id='usuario' placeholder='Herfino' autocomplete='off'>";
                                             echo "</div>";
 
                                             echo "<div class='form-group'>";
@@ -139,6 +139,9 @@
                                             echo "<input type='hidden' id='location' name='location' value='../view/h/index.php'>";
                                             echo "<input type='hidden' id='idThread' name='idThread' value=".$t[0].">";
 
+                                            echo "<input type='file' class='form-control-file' id='imagen' name='imagen'>
+                                            <br>";
+
                                             echo "<input class='btn btn-primary' type='submit' value='Postear' role='button'>";
                                         echo "</form>";
                                     echo "</div>";
@@ -148,8 +151,27 @@
                         echo "</div>";
 
                         echo "<p>";
-                            echo "".$t[2];
+                            if($t[5] != NULL) {
+                                echo "<a data-toggle='modal' data-target='#img".$t[0]."' href='../../res/content/".$t[5]."'><img src='../../res/content/".$t[5]."' class='img-fluid' style='max-width: 10%'></a>";
+                            }
+                            echo "  ".$t[2];
                         echo "</p>";
+                        
+                        echo "<div class='modal fade' id='img".$t[0]."' tabindex='-1' role='dialog'>
+                                <div class='modal-dialog' role='document'>
+                                    <div class='modal-content'>
+                                        <div class='modal-header'>
+                                            <h5 class='modal-title'>".$t[5]."</h5>
+                                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                <span aria-hidden='true'>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class='modal-body'>
+                                            <img src='../../res/content/".$t[5]."' class='img-fluid'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>";
 
                         $posts = $d->verPosts($t[0]);
 
@@ -161,8 +183,28 @@
                                     echo "<h6>  No. ".$p[1]."</h6>";
 
                                         echo "<p>";
-                                            echo "".$p[2];
+                                            if($p[6] != NULL) {
+                                                echo "<a data-toggle='modal' data-target='#img".$p[1]."' href='../../res/content/".$p[6]."'><img src='../../res/content/".$p[6]."' class='img-fluid' style='max-width: 10%'></a>";
+                                            }
+                                            echo "  ".$p[2];
                                         echo "</p>";
+
+                                        echo "<div class='modal fade' id='img".$p[1]."' tabindex='-1' role='dialog'>
+                                            <div class='modal-dialog' role='document'>
+                                                <div class='modal-content'>
+                                                    <div class='modal-header'>
+                                                        <h5 class='modal-title'>".$p[6]."</h5>
+                                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                            <span aria-hidden='true'>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class='modal-body'>
+                                                        <img src='../../res/content/".$p[6]."' class='img-fluid'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>";
+                                    
                                     echo "</div>";
                                 echo "</div>";
                             echo "</div>";
